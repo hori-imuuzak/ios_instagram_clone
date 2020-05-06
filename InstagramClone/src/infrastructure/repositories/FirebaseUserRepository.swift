@@ -51,4 +51,26 @@ class FirebaseUserRepository: UserRepository {
             return Disposables.create()
         }
     }
+    
+    func updateProfile(displayName: String) -> Observable<User?> {
+        return Observable<User?>.create { (observer: AnyObserver) -> Disposable in
+            if let user = Auth.auth().currentUser {
+                let changeRequest = user.createProfileChangeRequest()
+                changeRequest.displayName = displayName
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        print("ERROR: " + error.localizedDescription)
+                    }
+                    
+                    observer.onNext(User(
+                        userId: user.uid,
+                        userName: user.displayName ?? ""
+                    ))
+                    observer.onCompleted()
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
