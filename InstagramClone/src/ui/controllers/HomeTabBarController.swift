@@ -7,24 +7,41 @@
 //
 
 import UIKit
+import RxSwift
 
-class HomeTabBarController: UITabBarController {
+class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
+    private let homeService = HomeService(userRepository: FirebaseUserRepository())
+
+    override func viewDidAppear(_ animated: Bool) {
+        homeService.observeLoggedIn().subscribe(onNext: { (isLoggedIn: Bool) in
+            if !isLoggedIn {
+                if let loginViewController = self.storyboard?.instantiateViewController(identifier: "Login") {
+                    self.present(loginViewController, animated: true, completion: nil)
+                }
+            }
+        }, onError: { (Error) in
+        }, onCompleted: {
+        }) {
+            print("disposed")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController is ImageSelectViewController {
+            // モーダル表示
+            if let imageSelectViewController = storyboard?.instantiateViewController(identifier: "ImageSelect") {
+                present(imageSelectViewController, animated: true)
+                return false
+            }
+        }
+        
+        return true
     }
-    */
 
 }
