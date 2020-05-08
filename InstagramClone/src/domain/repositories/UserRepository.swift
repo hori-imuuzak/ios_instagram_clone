@@ -10,6 +10,7 @@ import RxSwift
 
 protocol UserRepository {
     func fetchCurrentUser() -> Observable<User?>
+    func login(user: LoginUser) -> Observable<User?>
     func register(user: RegisterUser) -> Observable<User?>
     func updateProfile(displayName: String) -> Observable<User?>
 }

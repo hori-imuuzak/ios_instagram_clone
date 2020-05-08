@@ -15,25 +15,56 @@ class RegisterService {
         self.userRepository = userRepository
     }
     
-    func registerUser(email: String, password: String, displayName: String) -> Observable<User?> {
+    func loginUser(email: String, password: String) -> Observable<User?> {
         return Observable<User?>.create { (observer) -> Disposable in
-            if email.isEmpty || password.isEmpty || displayName.isEmpty {
+            var loginUser: LoginUser? = nil
+            do {
+                loginUser = try LoginUser(email: email, password: password)
+            } catch ModelError.illegalArgument(let paramName) {
+                print("Error: " + paramName)
                 observer.onNext(nil)
                 observer.onCompleted()
                 return Disposables.create()
+            } catch {}
+            
+            if let loginUser = loginUser {
+                self.userRepository.login(user: loginUser)
+                    .subscribe(onNext: { (user: User?) in
+                        observer.onNext(user)
+                    }, onError: { (Error) in
+                    }, onCompleted: {
+                        observer.onCompleted()
+                    }) {
+                    }
             }
-            
-            let registerUser = try! RegisterUser(email: email, password: password, displayName: displayName)
-            
-            Observable.zip(
-                self.userRepository.register(user: registerUser),
-                self.userRepository.updateProfile(displayName: displayName)
-            ).subscribe(onNext: { (registerUser: User?, updateUser: User?) in
-                observer.onNext(updateUser)
-            }, onError: { (Error) in
-            }, onCompleted: {
+         
+            return Disposables.create()
+        }
+    }
+    
+    func registerUser(email: String, password: String, displayName: String) -> Observable<User?> {
+        return Observable<User?>.create { (observer) -> Disposable in
+            var registerUser: RegisterUser? = nil
+            do {
+                registerUser = try RegisterUser(email: email, password: password, displayName: displayName)
+            } catch ModelError.illegalArgument(let paramName) {
+                print("Error: " + paramName)
+                observer.onNext(nil)
                 observer.onCompleted()
-            }) {
+                return Disposables.create()
+            } catch {}
+
+            if let registerUser = registerUser {
+                Observable.concat(
+                    self.userRepository.register(user: registerUser),
+                    self.userRepository.updateProfile(displayName: displayName)
+                ).subscribe(onNext: { (user: User?) in
+                    observer.onNext(user)
+                }, onError: { (Error) in
+                }, onCompleted: {
+                    observer.onCompleted()
+                }) {
+                }
             }
             
             return Disposables.create()

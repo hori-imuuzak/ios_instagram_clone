@@ -12,6 +12,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var displayNameTextField: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     private let registerService = RegisterService(userRepository: FirebaseUserRepository())
     
@@ -20,12 +23,33 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func setLoading(_ isLoading: Bool) {
+        self.view.endEditing(true)
+        loadingIndicator.isHidden = !isLoading
+        loginButton.isEnabled = !isLoading
+        registerButton.isEnabled = !isLoading
+    }
 
     @IBAction func login(_ sender: Any) {
+        self.setLoading(true)
+        
+        self.registerService.loginUser(email: mailTextField.text ?? "", password: passwordTextField.text ?? "")
+            .subscribe(onNext: { (user: User?) in
+                if user == nil {
+                    self.showAlert(message: "ログインに失敗しました。")
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }, onError: { (Error) in
+            }, onCompleted: {
+                self.setLoading(false)
+            }) {
+            }
     }
     
     @IBAction func createAccount(_ sender: Any) {
-        // TODO: ボタン押せなくしてローディングを表示する
+        self.setLoading(true)
         
         self.registerService.registerUser(
             email: mailTextField.text ?? "",
@@ -39,6 +63,7 @@ class LoginViewController: UIViewController {
             }
         }, onError: { (Error) in
         }, onCompleted: {
+            self.setLoading(false)
         }, onDisposed: {
         })
     }

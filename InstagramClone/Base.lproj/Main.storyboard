@@ -84,7 +84,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="yfL-Es-iPO"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGH-AE-5D0">
@@ -92,7 +92,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Gou-qt-HVW"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="アカウント名（アカウント作成時のみ）" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgR-o9-bFf">
@@ -100,11 +100,18 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="fmK-sa-62s"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="w4u-Zt-2lX">
+                                <rect key="frame" x="172" y="286" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="OsW-fg-3Aj"/>
+                                    <constraint firstAttribute="height" constant="70" id="eq4-ai-TNC"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjl-L1-3d0">
-                                <rect key="frame" x="57" y="306" width="300" height="40"/>
+                                <rect key="frame" x="57" y="356" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="0RJ-bb-Hfw"/>
                                 </constraints>
@@ -115,7 +122,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiG-Lg-wcy">
-                                <rect key="frame" x="57" y="366" width="300" height="40"/>
+                                <rect key="frame" x="57" y="416" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="A8d-ls-QqO"/>
                                 </constraints>
@@ -131,13 +138,15 @@
                             <constraint firstItem="YiG-Lg-wcy" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="1uy-pD-4gr"/>
                             <constraint firstItem="bgR-o9-bFf" firstAttribute="centerX" secondItem="bGH-AE-5D0" secondAttribute="centerX" id="C1b-z0-syO"/>
                             <constraint firstItem="YiG-Lg-wcy" firstAttribute="top" secondItem="jjl-L1-3d0" secondAttribute="bottom" constant="20" id="DJO-tw-qQi"/>
+                            <constraint firstItem="jjl-L1-3d0" firstAttribute="top" secondItem="w4u-Zt-2lX" secondAttribute="bottom" id="Jy9-wn-ozM"/>
+                            <constraint firstItem="w4u-Zt-2lX" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="Ks8-ID-PcK"/>
                             <constraint firstItem="jjl-L1-3d0" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="ZGi-aZ-F3k"/>
-                            <constraint firstItem="jjl-L1-3d0" firstAttribute="top" secondItem="bgR-o9-bFf" secondAttribute="bottom" constant="20" id="a9x-iv-Z5H"/>
                             <constraint firstItem="bgR-o9-bFf" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="bBS-KQ-fEb"/>
                             <constraint firstItem="jjl-L1-3d0" firstAttribute="centerX" secondItem="bGH-AE-5D0" secondAttribute="centerX" id="ba6-BZ-AJM"/>
                             <constraint firstItem="bgR-o9-bFf" firstAttribute="top" secondItem="bGH-AE-5D0" secondAttribute="bottom" constant="20" id="bz1-ln-TTa"/>
                             <constraint firstItem="S2f-lG-IBy" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="eVy-a1-AOs"/>
                             <constraint firstItem="bGH-AE-5D0" firstAttribute="centerX" secondItem="l47-YG-FDF" secondAttribute="centerX" id="fid-Q1-kgj"/>
+                            <constraint firstItem="w4u-Zt-2lX" firstAttribute="top" secondItem="bgR-o9-bFf" secondAttribute="bottom" id="k3V-3v-JCY"/>
                             <constraint firstItem="S2f-lG-IBy" firstAttribute="top" secondItem="DIN-AQ-Va0" secondAttribute="top" constant="100" id="m8e-AZ-FDL"/>
                             <constraint firstItem="bGH-AE-5D0" firstAttribute="top" secondItem="S2f-lG-IBy" secondAttribute="bottom" constant="20" id="vHx-ew-51P"/>
                             <constraint firstItem="YiG-Lg-wcy" firstAttribute="centerX" secondItem="bGH-AE-5D0" secondAttribute="centerX" id="wau-3B-dB8"/>
@@ -146,8 +155,11 @@
                     </view>
                     <connections>
                         <outlet property="displayNameTextField" destination="bgR-o9-bFf" id="l34-D3-ZK0"/>
+                        <outlet property="loadingIndicator" destination="w4u-Zt-2lX" id="N5Z-o6-Ygx"/>
+                        <outlet property="loginButton" destination="jjl-L1-3d0" id="OBz-OX-fdM"/>
                         <outlet property="mailTextField" destination="S2f-lG-IBy" id="2aJ-uv-r89"/>
                         <outlet property="passwordTextField" destination="bGH-AE-5D0" id="aNf-0I-Zyd"/>
+                        <outlet property="registerButton" destination="YiG-Lg-wcy" id="xtk-gb-ZXL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWW-82-UQe" sceneMemberID="firstResponder"/>

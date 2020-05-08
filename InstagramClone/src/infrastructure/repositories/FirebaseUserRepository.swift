@@ -29,6 +29,29 @@ class FirebaseUserRepository: UserRepository {
         }
     }
     
+    func login(user: LoginUser) -> Observable<User?> {
+        return Observable<User?>.create { (observer) -> Disposable in
+            Auth.auth().signIn(withEmail: user.email, password: user.password) { (result: AuthDataResult?, error: Error?) in
+                if let error = error {
+                    print("ERROR: " + error.localizedDescription)
+                    observer.onNext(nil)
+                    observer.onCompleted()
+                }
+                
+                if let firebaseUser = result?.user {
+                    observer.onNext(User(
+                        userId: firebaseUser.uid,
+                        userName: firebaseUser.displayName ?? ""
+                    ))
+                }
+                
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     func register(user: RegisterUser) -> Observable<User?> {
         return Observable<User?>.create { (observer: AnyObserver) -> Disposable in
             Auth.auth().createUser(withEmail: user.email, password: user.password) {
@@ -39,13 +62,14 @@ class FirebaseUserRepository: UserRepository {
                     observer.onCompleted()
                 }
                 
-                if let user = Auth.auth().currentUser {
+                if let user = authResult?.user {
                     observer.onNext(User(
                         userId: user.uid,
                         userName: user.displayName ?? ""
                     ))
-                    observer.onCompleted()
                 }
+                
+                observer.onCompleted()
             }
             
             return Disposables.create()
