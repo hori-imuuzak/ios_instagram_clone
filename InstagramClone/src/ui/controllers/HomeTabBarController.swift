@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 
 class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
-    private let homeService = HomeService(userRepository: FirebaseUserRepository())
+    private let accountService = AccountService(userRepository: FirebaseUserRepository())
 
     override func viewDidAppear(_ animated: Bool) {
-        homeService.observeLoggedIn().subscribe(onNext: { (isLoggedIn: Bool) in
+        accountService.checkLoggedIn().subscribe(onNext: { (isLoggedIn: Bool) in
             if !isLoggedIn {
                 if let loginViewController = self.storyboard?.instantiateViewController(identifier: "Login") {
                     self.present(loginViewController, animated: true, completion: nil)

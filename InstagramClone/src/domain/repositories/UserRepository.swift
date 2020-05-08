@@ -13,4 +13,5 @@ protocol UserRepository {
     func login(user: LoginUser) -> Observable<User?>
     func register(user: RegisterUser) -> Observable<User?>
     func updateProfile(displayName: String) -> Observable<User?>
+    func logout() -> Observable<Void>
 }

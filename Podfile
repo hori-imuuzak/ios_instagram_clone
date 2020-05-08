@@ -15,6 +15,7 @@ target 'InstagramClone' do
   pod 'FirebaseUI/Storage'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
+  pod 'SVProgressHUD','2.2.5'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 end

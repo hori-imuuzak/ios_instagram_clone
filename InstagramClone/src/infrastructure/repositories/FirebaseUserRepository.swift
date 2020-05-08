@@ -97,4 +97,14 @@ class FirebaseUserRepository: UserRepository {
             return Disposables.create()
         }
     }
+    
+    func logout() -> Observable<Void> {
+        return Observable<Void>.create { (observer) -> Disposable in
+            try? Auth.auth().signOut()
+            
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
+    }
 }

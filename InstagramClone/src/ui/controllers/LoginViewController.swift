@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import SVProgressHUD
+import RxSwift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var displayNameTextField: UITextField!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
     
-    private let registerService = RegisterService(userRepository: FirebaseUserRepository())
+    private let accountService = AccountService(userRepository: FirebaseUserRepository())
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +27,18 @@ class LoginViewController: UIViewController {
     
     func setLoading(_ isLoading: Bool) {
         self.view.endEditing(true)
-        loadingIndicator.isHidden = !isLoading
-        loginButton.isEnabled = !isLoading
-        registerButton.isEnabled = !isLoading
+        
+        if isLoading {
+            SVProgressHUD.show()
+        } else {
+            SVProgressHUD.dismiss()
+        }
     }
 
-    @IBAction func login(_ sender: Any) {
+    @IBAction func handleClickLogin(_ sender: Any) {
         self.setLoading(true)
         
-        self.registerService.loginUser(email: mailTextField.text ?? "", password: passwordTextField.text ?? "")
+        self.accountService.loginUser(email: mailTextField.text ?? "", password: passwordTextField.text ?? "")
             .subscribe(onNext: { (user: User?) in
                 if user == nil {
                     self.showAlert(message: "ログインに失敗しました。")
@@ -45,13 +49,13 @@ class LoginViewController: UIViewController {
             }, onCompleted: {
                 self.setLoading(false)
             }) {
-            }
+        }.disposed(by: disposeBag)
     }
     
-    @IBAction func createAccount(_ sender: Any) {
+    @IBAction func handleClickCreateAccount(_ sender: Any) {
         self.setLoading(true)
         
-        self.registerService.registerUser(
+        self.accountService.registerUser(
             email: mailTextField.text ?? "",
             password: passwordTextField.text ?? "",
             displayName: displayNameTextField.text ?? ""
@@ -65,7 +69,7 @@ class LoginViewController: UIViewController {
         }, onCompleted: {
             self.setLoading(false)
         }, onDisposed: {
-        })
+        }).disposed(by: disposeBag)
     }
     
     private func showAlert(message: String) {

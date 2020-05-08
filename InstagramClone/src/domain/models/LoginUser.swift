@@ -12,10 +12,10 @@ class LoginUser {
     
     init(email: String, password: String) throws {
         if email.isEmpty {
-            throw ModelError.illegalArgument(paramName: "email")
+            throw ModelError.illegalArgument("email")
         }
         if password.isEmpty {
-            throw ModelError.illegalArgument(paramName: "password")
+            throw ModelError.illegalArgument("password")
         }
 
         self.email = email

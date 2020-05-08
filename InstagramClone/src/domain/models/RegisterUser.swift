@@ -13,13 +13,13 @@ class RegisterUser {
     
     init(email: String, password: String, displayName: String) throws {
         if email.isEmpty {
-            throw ModelError.illegalArgument(paramName: "email")
+            throw ModelError.illegalArgument("email")
         }
         if password.isEmpty {
-            throw ModelError.illegalArgument(paramName: "password")
+            throw ModelError.illegalArgument("password")
         }
         if displayName.isEmpty {
-            throw ModelError.illegalArgument(paramName: "displayName")
+            throw ModelError.illegalArgument("displayName")
         }
 
         self.email = email

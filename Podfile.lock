@@ -138,6 +138,7 @@ PODS:
   - SDWebImage (5.7.4):
     - SDWebImage/Core (= 5.7.4)
   - SDWebImage/Core (5.7.4)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Firebase (= 6.11.0)
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - FirebaseUI/Storage
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SVProgressHUD (= 2.2.5)
 
 SPEC REPOS:
   trunk:
@@ -177,6 +179,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -205,7 +208,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 48b88379b798fd1e4298f95bb25d2cdabbf4deb3
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 6d9ce7221c3772ea91115ae94c418b4f78655599
+PODFILE CHECKSUM: 98ece91a76e988e08904fd73927cf530096f4098
 
 COCOAPODS: 1.8.4
