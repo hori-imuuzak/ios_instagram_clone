@@ -54,16 +54,17 @@ class ImageSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
         if let postViewController = self.storyboard?.instantiateViewController(identifier: "Post") as? PostViewController {
+            postViewController.image = image
             editor.present(postViewController, animated: true, completion: nil)
         }
     }
     
     func imageEditorDidCancel(_ editor: CLImageEditor!) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        editor.dismiss(animated: true, completion: nil)
     }
 }

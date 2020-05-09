@@ -7,24 +7,57 @@
 //
 
 import UIKit
+import SVProgressHUD
+import RxSwift
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, UITextFieldDelegate {
+    
+    var image: UIImage? = nil
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textField: UITextField!
+    
+    private let postService = PostService(
+        userRepository: FirebaseUserRepository(),
+        postRepository: FirebasePostRepository(),
+        imageRepository: FirebaseImageRepository()
+    )
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.imageView.image = self.image
+        self.textField.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    */
+    
+    @IBAction func handleClickCancel(_ sender: Any) {
+    }
+    
+    @IBAction func handleClickPost(_ sender: Any) {
+        SVProgressHUD.show()
+        
+        if let image = self.image {
+            self.postService.createPost(image: image, caption: textField.text ?? "")
+                .subscribe(onNext: { (result: Bool) in
+                if result {
+                    UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
+                } else {
+                    SVProgressHUD.showError(withStatus: "投稿に失敗しました。")
+                }
+            }, onError: { (Error) in
+                SVProgressHUD.showError(withStatus: "投稿に失敗しました。")
+            }, onCompleted: {
+                SVProgressHUD.dismiss()
+            }) {
+            }.disposed(by: self.disposeBag)
+        }
+    }
 
 }

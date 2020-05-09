@@ -28,6 +28,14 @@
 		7554CE09246314CC00E7ABDE /* ModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE08246314CC00E7ABDE /* ModelError.swift */; };
 		7554CE0B2463161000E7ABDE /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE0A2463161000E7ABDE /* AccountService.swift */; };
 		7554CE0D2465D5A700E7ABDE /* UpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE0C2465D5A700E7ABDE /* UpdateUser.swift */; };
+		7554CE0F2466DDDC00E7ABDE /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE0E2466DDDC00E7ABDE /* PostService.swift */; };
+		7554CE112466DDF400E7ABDE /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE102466DDF400E7ABDE /* PostRepository.swift */; };
+		7554CE132466DE3E00E7ABDE /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE122466DE3E00E7ABDE /* ImageRepository.swift */; };
+		7554CE152466DE5C00E7ABDE /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE142466DE5C00E7ABDE /* CreatePost.swift */; };
+		7554CE172466DFFE00E7ABDE /* FirebasePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE162466DFFE00E7ABDE /* FirebasePostRepository.swift */; };
+		7554CE1A2466E0AB00E7ABDE /* FirebaseConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE192466E0AB00E7ABDE /* FirebaseConst.swift */; };
+		7554CE1C2466E1ED00E7ABDE /* FirebaseImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE1B2466E1ED00E7ABDE /* FirebaseImageRepository.swift */; };
+		7554CE1E2466E32B00E7ABDE /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */; };
 		DEFC1CB4F3993298313C80A8 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C337CC8C3A82E695AF913E /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +65,14 @@
 		7554CE08246314CC00E7ABDE /* ModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelError.swift; sourceTree = "<group>"; };
 		7554CE0A2463161000E7ABDE /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		7554CE0C2465D5A700E7ABDE /* UpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUser.swift; sourceTree = "<group>"; };
+		7554CE0E2466DDDC00E7ABDE /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		7554CE102466DDF400E7ABDE /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		7554CE122466DE3E00E7ABDE /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		7554CE142466DE5C00E7ABDE /* CreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
+		7554CE162466DFFE00E7ABDE /* FirebasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePostRepository.swift; sourceTree = "<group>"; };
+		7554CE192466E0AB00E7ABDE /* FirebaseConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConst.swift; sourceTree = "<group>"; };
+		7554CE1B2466E1ED00E7ABDE /* FirebaseImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageRepository.swift; sourceTree = "<group>"; };
+		7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		FDAB74E5FD7A4CAFE7D537FB /* Pods-InstagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.debug.xcconfig"; path = "Target Support Files/Pods-InstagramClone/Pods-InstagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +166,7 @@
 		7554CDE12462FB8600E7ABDE /* infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				7554CE182466E09700E7ABDE /* shared */,
 				7554CDE82462FBD800E7ABDE /* repositories */,
 			);
 			path = infrastructure;
@@ -167,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				7554CE0A2463161000E7ABDE /* AccountService.swift */,
+				7554CE0E2466DDDC00E7ABDE /* PostService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -179,6 +197,7 @@
 				7554CE032463134D00E7ABDE /* RegisterUser.swift */,
 				7554CE0C2465D5A700E7ABDE /* UpdateUser.swift */,
 				7554CE05246313C800E7ABDE /* LoginUser.swift */,
+				7554CE142466DE5C00E7ABDE /* CreatePost.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -187,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				7554CDF924630C7000E7ABDE /* UserRepository.swift */,
+				7554CE102466DDF400E7ABDE /* PostRepository.swift */,
+				7554CE122466DE3E00E7ABDE /* ImageRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -203,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				7554CDFF24630CED00E7ABDE /* FirebaseUserRepository.swift */,
+				7554CE162466DFFE00E7ABDE /* FirebasePostRepository.swift */,
+				7554CE1B2466E1ED00E7ABDE /* FirebaseImageRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -211,6 +234,15 @@
 			isa = PBXGroup;
 			children = (
 				7554CE08246314CC00E7ABDE /* ModelError.swift */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		7554CE182466E09700E7ABDE /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				7554CE192466E0AB00E7ABDE /* FirebaseConst.swift */,
+				7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -348,22 +380,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7554CE172466DFFE00E7ABDE /* FirebasePostRepository.swift in Sources */,
 				7554CDEE2462FD0300E7ABDE /* PostViewController.swift in Sources */,
 				7554CDEA2462FCEB00E7ABDE /* LoginViewController.swift in Sources */,
 				7554CE0024630CED00E7ABDE /* FirebaseUserRepository.swift in Sources */,
+				7554CE1C2466E1ED00E7ABDE /* FirebaseImageRepository.swift in Sources */,
 				7554CDAA2462F64E00E7ABDE /* HomeViewController.swift in Sources */,
 				7554CDA62462F64E00E7ABDE /* AppDelegate.swift in Sources */,
 				7554CDEC2462FCFA00E7ABDE /* ImageSelectViewController.swift in Sources */,
 				7554CE09246314CC00E7ABDE /* ModelError.swift in Sources */,
+				7554CE1E2466E32B00E7ABDE /* FirebaseError.swift in Sources */,
+				7554CE132466DE3E00E7ABDE /* ImageRepository.swift in Sources */,
+				7554CE0F2466DDDC00E7ABDE /* PostService.swift in Sources */,
 				7554CE06246313C800E7ABDE /* LoginUser.swift in Sources */,
+				7554CE1A2466E0AB00E7ABDE /* FirebaseConst.swift in Sources */,
 				7554CE022463123F00E7ABDE /* UserService.swift in Sources */,
 				7554CDF02462FD0D00E7ABDE /* SettingViewController.swift in Sources */,
+				7554CE152466DE5C00E7ABDE /* CreatePost.swift in Sources */,
 				7554CDF42463019900E7ABDE /* HomeTabBarController.swift in Sources */,
 				7554CE0B2463161000E7ABDE /* AccountService.swift in Sources */,
 				7554CDFA24630C7000E7ABDE /* UserRepository.swift in Sources */,
 				7554CDA82462F64E00E7ABDE /* SceneDelegate.swift in Sources */,
 				7554CDFE24630CD000E7ABDE /* User.swift in Sources */,
 				7554CE042463134D00E7ABDE /* RegisterUser.swift in Sources */,
+				7554CE112466DDF400E7ABDE /* PostRepository.swift in Sources */,
 				7554CE0D2465D5A700E7ABDE /* UpdateUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
