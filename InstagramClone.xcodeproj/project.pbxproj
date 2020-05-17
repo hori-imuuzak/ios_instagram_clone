@@ -36,6 +36,9 @@
 		7554CE1A2466E0AB00E7ABDE /* FirebaseConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE192466E0AB00E7ABDE /* FirebaseConst.swift */; };
 		7554CE1C2466E1ED00E7ABDE /* FirebaseImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE1B2466E1ED00E7ABDE /* FirebaseImageRepository.swift */; };
 		7554CE1E2466E32B00E7ABDE /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */; };
+		7554CE20246C366C00E7ABDE /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE1F246C366B00E7ABDE /* PostData.swift */; };
+		7554CE23246C37E100E7ABDE /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7554CE21246C37E100E7ABDE /* PostTableViewCell.swift */; };
+		7554CE24246C37E100E7ABDE /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7554CE22246C37E100E7ABDE /* PostTableViewCell.xib */; };
 		DEFC1CB4F3993298313C80A8 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C337CC8C3A82E695AF913E /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		7554CE192466E0AB00E7ABDE /* FirebaseConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConst.swift; sourceTree = "<group>"; };
 		7554CE1B2466E1ED00E7ABDE /* FirebaseImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImageRepository.swift; sourceTree = "<group>"; };
 		7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		7554CE1F246C366B00E7ABDE /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		7554CE21246C37E100E7ABDE /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		7554CE22246C37E100E7ABDE /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		FDAB74E5FD7A4CAFE7D537FB /* Pods-InstagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone.debug.xcconfig"; path = "Target Support Files/Pods-InstagramClone/Pods-InstagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +141,7 @@
 		7554CDDE2462FB7200E7ABDE /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				7554CE26246C39CC00E7ABDE /* post */,
 				7554CDDF2462FB7800E7ABDE /* controllers */,
 			);
 			path = ui;
@@ -198,6 +205,7 @@
 				7554CE0C2465D5A700E7ABDE /* UpdateUser.swift */,
 				7554CE05246313C800E7ABDE /* LoginUser.swift */,
 				7554CE142466DE5C00E7ABDE /* CreatePost.swift */,
+				7554CE1F246C366B00E7ABDE /* PostData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -245,6 +253,23 @@
 				7554CE1D2466E32B00E7ABDE /* FirebaseError.swift */,
 			);
 			path = shared;
+			sourceTree = "<group>";
+		};
+		7554CE25246C37F800E7ABDE /* post_table_cell */ = {
+			isa = PBXGroup;
+			children = (
+				7554CE22246C37E100E7ABDE /* PostTableViewCell.xib */,
+				7554CE21246C37E100E7ABDE /* PostTableViewCell.swift */,
+			);
+			path = post_table_cell;
+			sourceTree = "<group>";
+		};
+		7554CE26246C39CC00E7ABDE /* post */ = {
+			isa = PBXGroup;
+			children = (
+				7554CE25246C37F800E7ABDE /* post_table_cell */,
+			);
+			path = post;
 			sourceTree = "<group>";
 		};
 		75C439B267E8669845A43775 /* Frameworks */ = {
@@ -325,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7554CDB22462F65500E7ABDE /* LaunchScreen.storyboard in Resources */,
+				7554CE24246C37E100E7ABDE /* PostTableViewCell.xib in Resources */,
 				7554CDF62463066300E7ABDE /* GoogleService-Info.plist in Resources */,
 				7554CDAF2462F65500E7ABDE /* Assets.xcassets in Resources */,
 				7554CDAD2462F64E00E7ABDE /* Main.storyboard in Resources */,
@@ -397,6 +423,7 @@
 				7554CE022463123F00E7ABDE /* UserService.swift in Sources */,
 				7554CDF02462FD0D00E7ABDE /* SettingViewController.swift in Sources */,
 				7554CE152466DE5C00E7ABDE /* CreatePost.swift in Sources */,
+				7554CE20246C366C00E7ABDE /* PostData.swift in Sources */,
 				7554CDF42463019900E7ABDE /* HomeTabBarController.swift in Sources */,
 				7554CE0B2463161000E7ABDE /* AccountService.swift in Sources */,
 				7554CDFA24630C7000E7ABDE /* UserRepository.swift in Sources */,
@@ -405,6 +432,7 @@
 				7554CE042463134D00E7ABDE /* RegisterUser.swift in Sources */,
 				7554CE112466DDF400E7ABDE /* PostRepository.swift in Sources */,
 				7554CE0D2465D5A700E7ABDE /* UpdateUser.swift in Sources */,
+				7554CE23246C37E100E7ABDE /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

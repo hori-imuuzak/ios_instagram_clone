@@ -46,6 +46,29 @@ class PostService {
         return Observable.of(false)
     }
     
+    func fetchPostImage(fileName: String) -> Observable<AnyObject> {
+        return self.imageRepository.fetchImage(fileName: fileName)
+    }
+    
+    func fetchPostList() -> Observable<Array<PostData>> {
+        return self.postRepository.fetchPostList()
+    }
+    
+    func toggleLike(postData: PostData) -> Disposable {
+        return self.userRepository.fetchCurrentUser().subscribe(onNext: { (user: User?) in
+            if let user = user {
+                if postData.isLiked {
+                    self.postRepository.removeFavorite(postId: postData.id, uid: user.userId)
+                } else {
+                    self.postRepository.addFavorite(postId: postData.id, uid: user.userId)
+                }
+            }
+        }, onError: { (Error) in
+        }, onCompleted: {
+        }, onDisposed: {
+        })
+    }
+    
     private func generateRandomStr(length: Int = 16) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var str = ""

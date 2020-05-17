@@ -10,4 +10,7 @@ import RxSwift
 
 protocol PostRepository {
     func create(post: CreatePost) -> Observable<Bool>
+    func fetchPostList() -> Observable<Array<PostData>>
+    func addFavorite(postId: String, uid: String)
+    func removeFavorite(postId: String, uid: String)
 }

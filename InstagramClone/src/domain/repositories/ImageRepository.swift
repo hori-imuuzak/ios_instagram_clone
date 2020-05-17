@@ -10,4 +10,5 @@ import RxSwift
 
 protocol ImageRepository {
     func uploadImage(fileName: String, imageData: Data) -> Observable<String?>
+    func fetchImage(fileName: String) -> Observable<AnyObject>
 }

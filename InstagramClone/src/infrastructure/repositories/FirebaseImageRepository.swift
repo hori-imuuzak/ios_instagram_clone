@@ -31,4 +31,15 @@ class FirebaseImageRepository: ImageRepository {
             return Disposables.create()
         }
     }
+    
+    func fetchImage(fileName: String) -> Observable<AnyObject> {
+        return Observable.create { observer -> Disposable in
+            let imageRef = Storage.storage().reference().child(FirebaseConst.ImagePath).child("\(fileName).jpg")
+            
+            observer.onNext(imageRef)
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
+    }
 }
